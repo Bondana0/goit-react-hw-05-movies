@@ -1,9 +1,15 @@
 import { StyledPoster } from '../MovieItem/MovieItem.styled';
 import PropTypes from 'prop-types'
-import { StyledMovieCard, StyledMovieInfo } from './MovieCard.styled';
+import React, { useRef } from 'react';
+import { StyledMovieCard, StyledMovieInfo, StyledBackButton } from './MovieCard.styled';
+import { Link, useLocation } from 'react-router-dom';
 import { StyledTitle } from 'components/Layout/Layout.styled';
 
+
 const MovieCard = ({ movie }) => {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+
   const {
     poster_path,
     title,
@@ -19,6 +25,10 @@ const MovieCard = ({ movie }) => {
         : 'Not rated yet';
 
   return (
+  <>
+  <Link to={backLinkLocationRef.current}>
+        <StyledBackButton type="button">Back to</StyledBackButton>
+      </Link>
     <StyledMovieCard>
       {poster_path && (
         <StyledPoster
@@ -44,6 +54,7 @@ const MovieCard = ({ movie }) => {
         )}
       </StyledMovieInfo>
     </StyledMovieCard>
+    </>
   );
 }
 MovieCard.propTypes = {

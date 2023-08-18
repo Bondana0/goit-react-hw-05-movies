@@ -10,3 +10,14 @@ export const StyledMovieInfo = styled.div`
     flex-direction: column;
     gap: 10px;
 `
+export const StyledBackButton = styled.button`
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: transparent;
+
+  transition: transform 250ms ease-in-out 0s;
+
+  &:hover {
+    box-shadow: rgb(198, 200, 204) 5px 5px 5px 0px;
+  }
+`;
